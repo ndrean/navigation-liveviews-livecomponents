@@ -1,0 +1,15 @@
+<nav class="flex justify-between items-center font-bold text-[bisque] bg-[midnightblue]">
+  <h3>NavBar Test</h3>
+  <ul class="list-none flex">
+    <%= for {menu, path} <- @menus do %>
+      <li class="rounded-md px-1 py-1">
+        <.link patch={path} class={["text-[white]", path == @current_path && @active]}>
+          <%= menu %>
+        </.link>
+      </li>
+    <% end %>
+  </ul>
+</nav>
+<body class="bg-white antialiased">
+  <%= @inner_content %>
+</body>

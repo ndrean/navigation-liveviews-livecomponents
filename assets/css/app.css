@@ -1,0 +1,37 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+/* nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  background: midnightblue;
+  color: bisque;
+  font-weight: bold;
+}
+
+nav ul {
+  display: flex;
+  list-style: none;
+} */
+
+/* nav li {
+  padding: 0rem 1rem 0rem 1rem;
+  border-radius: 0.2rem;
+} */
+
+/* nav a {
+  text-decoration: none;
+  color: white;
+}
+
+.active {
+  background: bisque;
+}
+
+li.active a {
+  color: midnightblue;
+} */
