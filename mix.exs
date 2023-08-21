@@ -44,6 +44,7 @@ defmodule Navbar.MixProject do
       {:gettext, "~> 0.20"},
       {:jason, "~> 1.2"},
       {:plug_cowboy, "~> 2.5"},
+      {:websockex, "~> 0.4.3"},
       {:esbuild, "~> 0.7", runtime: Mix.env() == :dev},
       {:tailwind, "~> 0.2.0", runtime: Mix.env() == :dev},
       {:sobelow, "~> 0.13", only: [:dev, :test], runtime: false},

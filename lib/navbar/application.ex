@@ -15,7 +15,8 @@ defmodule Navbar.Application do
       # Start Finch
       {Finch, name: Navbar.Finch},
       # Start the Endpoint (http/https)
-      NavbarWeb.Endpoint
+      NavbarWeb.Endpoint,
+      {DynamicSupervisor, name: MyDynSup, strategy: :one_for_one}
       # Start a worker by calling: Navbar.Worker.start_link(arg)
       # {Navbar.Worker, arg}
     ]

@@ -1,0 +1,29 @@
+lockfileVersion: '6.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+dependencies:
+  dayjs:
+    specifier: ^1.11.9
+    version: 1.11.9
+  lightweight-charts:
+    specifier: ^4.0.1
+    version: 4.0.1
+
+packages:
+
+  /dayjs@1.11.9:
+    resolution: {integrity: sha512-QvzAURSbQ0pKdIye2txOzNaHmxtUBXerpY0FJsFXUMKbIZeFm5ht1LS/jFsrncjnmtv8HsG0W2g6c0zUjZWmpA==}
+    dev: false
+
+  /fancy-canvas@2.1.0:
+    resolution: {integrity: sha512-nifxXJ95JNLFR2NgRV4/MxVP45G9909wJTEKz5fg/TZS20JJZA6hfgRVh/bC9bwl2zBtBNcYPjiBE4njQHVBwQ==}
+    dev: false
+
+  /lightweight-charts@4.0.1:
+    resolution: {integrity: sha512-p+j6w41PVzf9Vn7IrmpmCJacunpN0kKsl0IZoxMOySSkDcSagZ7Is9pb6pclIfN/usHdta0aYm9FktkYpAQe0g==}
+    dependencies:
+      fancy-canvas: 2.1.0
+    dev: false
