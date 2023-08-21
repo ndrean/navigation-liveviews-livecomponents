@@ -20,7 +20,7 @@ defmodule NavbarWeb.Router do
     live_session :default,
       on_mount: [{NavbarWeb.ActiveAssigns, :select_active}] do
       live "/", HomePageLive, :index
-      live "/page1", Page1Live, :index
+      live "/chart", Page1Live, :index
       live "/page2", Page2Live, :index
     end
   end
