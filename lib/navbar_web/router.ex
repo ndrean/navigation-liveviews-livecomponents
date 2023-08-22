@@ -18,10 +18,10 @@ defmodule NavbarWeb.Router do
     pipe_through :browser
 
     live_session :default,
-      on_mount: [{NavbarWeb.ActiveAssigns, :select_active}] do
-      live "/", HomePageLive, :index
-      live "/chart", Page1Live, :index
-      live "/page2", Page2Live, :index
+      on_mount: [{NavbarWeb.ActiveAssigns, :set_active_path}] do
+      live "/", HomePageLive
+      live "/chart", Page1Live
+      live "/page2", Page2Live
     end
   end
 

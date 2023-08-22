@@ -7,7 +7,7 @@ defmodule NavbarWeb.ActiveAssigns do
   import Phoenix.Component
   import Phoenix.VerifiedRoutes
 
-  def on_mount(:select_active, params, _session, socket) do
+  def on_mount(:set_active_path, params, _session, socket) do
     params |> dbg()
     active = "bg-[bisque] text-[midnightblue] px-1 py-1"
 
@@ -17,6 +17,11 @@ defmodule NavbarWeb.ActiveAssigns do
           {"Home", path(socket, NavbarWeb.Router, ~p"/")},
           {"Chart", path(socket, NavbarWeb.Router, ~p"/chart")},
           {"Page 2", path(socket, NavbarWeb.Router, ~p"/page2")}
+        ],
+        menus2: [
+          {"Home", path(socket, NavbarWeb.Router, ~p"/"), "/"},
+          {"P1", path(socket, NavbarWeb.Router, ~p"/?page=p1"), "/p1"},
+          {"P2", path(socket, NavbarWeb.Router, ~p"/?page=p2"), "/p2"}
         ],
         active: active
       )
