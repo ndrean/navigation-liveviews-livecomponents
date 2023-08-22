@@ -35,16 +35,12 @@ defmodule NavbarWeb.HomePageLive do
   end
 
   def render(%{current_path: "/p2"} = assigns) do
-    IO.inspect(assigns.current_path)
-
     ~H"""
     <.live_component module={NavbarWeb.P2Comp} id={2} />
     """
   end
 
   def render(assigns) do
-    IO.inspect(assigns.current_path)
-
     ~H"""
     <h1>Home page</h1>
     <.simple_form id="symbol-form" for={@form} phx-submit="stream" phx-change="set_symbol">
@@ -68,7 +64,13 @@ defmodule NavbarWeb.HomePageLive do
   def handle_params(params, _uri, socket) do
     case params do
       %{"page" => page} ->
-        {:noreply, assign(socket, current_path: "/#{page}")}
+        case Map.get(socket.assigns, :symbol) do
+          nil ->
+            {:noreply, push_patch(socket, to: ~p"/")}
+
+          _ ->
+            {:noreply, assign(socket, current_path: "/#{page}")}
+        end
 
       _ ->
         {:noreply, socket}
@@ -89,6 +91,9 @@ defmodule NavbarWeb.HomePageLive do
     {:noreply, push_navigate(socket, to: ~p"/chart?symbol=#{symbol}", replace: true)}
   end
 
+  @doc """
+  Capture the broadcasted
+  """
   @impl true
   def handle_info(%{topic: "price", event: _event, payload: payload}, socket) do
     send_update(NavbarWeb.P1Comp, id: 1, price_update: payload)
