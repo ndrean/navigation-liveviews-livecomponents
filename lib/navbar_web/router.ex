@@ -18,7 +18,7 @@ defmodule NavbarWeb.Router do
     pipe_through :browser
 
     live_session :default,
-      on_mount: [{NavbarWeb.ActiveAssigns, :set_active_path}] do
+      on_mount: [{NavbarWeb.ActiveAssigns, :set_path_in_socket}] do
       live "/", HomePageLive
       live "/chart", Page1Live
       live "/page2", Page2Live

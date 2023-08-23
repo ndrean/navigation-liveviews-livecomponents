@@ -16,9 +16,8 @@ defmodule Navbar.Application do
       {Finch, name: Navbar.Finch},
       # Start the Endpoint (http/https)
       NavbarWeb.Endpoint,
-      {DynamicSupervisor, name: MyDynSup, strategy: :one_for_one}
-      # Start a worker by calling: Navbar.Worker.start_link(arg)
-      # {Navbar.Worker, arg}
+      {DynamicSupervisor, name: MyDynSup, strategy: :one_for_one},
+      {Task, fn -> shutdown_when_inactive(:timer.minutes(10)) end}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html
@@ -33,5 +32,15 @@ defmodule Navbar.Application do
   def config_change(changed, _new, removed) do
     NavbarWeb.Endpoint.config_change(changed, removed)
     :ok
+  end
+
+  defp shutdown_when_inactive(every_ms) do
+    Process.sleep(every_ms)
+
+    if :ranch.procs(AppWeb.Endpoint.HTTP, :connections) == [] do
+      System.stop(0)
+    else
+      shutdown_when_inactive(every_ms)
+    end
   end
 end

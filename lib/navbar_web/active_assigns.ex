@@ -7,8 +7,7 @@ defmodule NavbarWeb.ActiveAssigns do
   import Phoenix.Component
   import Phoenix.VerifiedRoutes
 
-  def on_mount(:set_active_path, params, _session, socket) do
-    params |> dbg()
+  def on_mount(:set_path_in_socket, _params, _session, socket) do
     active = "bg-[bisque] text-[midnightblue] px-1 py-1"
 
     socket =
@@ -28,7 +27,7 @@ defmodule NavbarWeb.ActiveAssigns do
 
     {:cont,
      socket
-     |> attach_hook(:set_menu_path, :handle_params, &manage_active_tabs/3)}
+     |> attach_hook(:set_path_in_socket, :handle_params, &manage_active_tabs/3)}
   end
 
   defp manage_active_tabs(_params, url, socket) do
